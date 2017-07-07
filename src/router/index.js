@@ -1,15 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Layout from '../components/Layout.vue'
+import ZZMJApi from '../views/zzmj/Api.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
+      path: '/admin',
+      name: 'admin',
+      component: Layout,
+      children: [
+        {name: 'zzmjapi', path: 'zzmj/api', component: ZZMJApi}
+      ]
+    },
+    { path: '/', redirect: 'admin/zzmj/api' }
   ]
 })
